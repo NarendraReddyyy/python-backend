@@ -25,3 +25,17 @@ jobs:
           tags: |
             ${{ secrets.IMAGE_NAME }}:latest
             ${{ secrets.IMAGE_NAME }}:${{ github.sha }}
+
+  deploy:
+    needs: build_and_push
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH to VPS and deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}  # or use 'key:' with an SSH key secret
+          script: |
+            ls
+            pwd
