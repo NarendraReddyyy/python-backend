@@ -35,6 +35,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
+          port: ${{ secrets.VPS_PORT }}
           password: ${{ secrets.VPS_PASSWORD }}  # or use 'key:' with an SSH key secret
           script: |
             ls
