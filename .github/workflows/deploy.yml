@@ -43,6 +43,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
+            ${{ secrets.IMAGE_NAME }}:latest
             ${{ secrets.IMAGE_NAME }}:${{ steps.get_tag.outputs.tag }}
 
   deploy:
